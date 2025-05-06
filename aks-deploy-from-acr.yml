@@ -1,38 +1,38 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: AzureDeployeeExample-deployment
+  name: azureexample-deployment
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: azureDeployeeExample-app
+      app: azureexample-app
   template:
     metadata:
       labels:
-        app: azureDeployeeExample-app
+        app: azureexample-app
     spec:
       containers:
-      - name: azureDeployeeExample-app
-        image: myacrrepo1234.azurecr.io/nikit12345/AzureDeployeeExample:latest
+      - name: azureexample-app
+        image: myacrrepo1234.azurecr.io/nikit12345/AzureDeployeeExample:#{Build.BuildId}#
         imagePullPolicy: Always
         ports:
-        - containerPort: 9090
+        - containerPort: 8082
 # service type loadbalancer       
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: azureDeployeeExample-app
-    k8s-app: azureDeployeeExample-app
-  name: azureDeployeeExample-app
+    app: azureexample-app
+    k8s-app: azureexample-app
+  name: azureexample-app
 spec:
   ports:
   - name: http
-    port: 90
+    port: 80
     protocol: TCP
-    targetPort: 9090
+    targetPort: 8082
   type: LoadBalancer
   selector:
-    app: azureDeployeeExample-app
+    app: azureexample-app
