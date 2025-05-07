@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: azureexample-app
-        image: myacrrepo1234.azurecr.io/nikit12345/azuredeployeeexample
+        image: myacrrepo1234.azurecr.io/nikit12345/azuredeployeeexample:v1
         imagePullPolicy: Always
         ports:
         - containerPort: 8082
