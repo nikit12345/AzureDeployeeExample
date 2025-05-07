@@ -1,7 +1,7 @@
 - task: Kubectl@1
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceEndpoint: 'myAzureService'   # <--- This is the name you just created
+    kubernetesServiceEndpoint: 'myAKSCluster'   # <--- This is the name you just created
     namespace: 'default'
     command: 'apply'
     arguments: '-f deploy/deployment.yaml'
